@@ -17,9 +17,12 @@ public class Game {
     private Long id;
     private String titulo;
     private Integer ano;
+    private String plataforma;
     private String genero;
     private Double pontuacao;
     private String imgUrl;
+    @Column(columnDefinition = "TEXT")
     private String descricaoCurta;
+    @Column(columnDefinition = "TEXT")
     private String descricaoLonga;
 }
