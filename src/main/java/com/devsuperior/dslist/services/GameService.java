@@ -4,6 +4,7 @@ import com.devsuperior.dslist.dtos.GameDTO;
 import com.devsuperior.dslist.dtos.GameDetalhadoDTO;
 import com.devsuperior.dslist.entities.Game;
 import com.devsuperior.dslist.excecao.NaoEncontrado;
+import com.devsuperior.dslist.projecoes.GameProjecao;
 import com.devsuperior.dslist.repositories.GameRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,14 @@ public class GameService {
 
         // Convertendo a entidade para dto
         return new GameDetalhadoDTO(game);
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameDTO> buscarListas(Long id) {
+        var listaGames = gameRepository.searchByList(id);
+
+        return listaGames.stream()
+                .map(GameDTO::new)
+                .toList();
     }
 }

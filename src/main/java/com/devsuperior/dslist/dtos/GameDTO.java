@@ -1,6 +1,7 @@
 package com.devsuperior.dslist.dtos;
 
 import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.projecoes.GameProjecao;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,5 +23,13 @@ public class GameDTO {
         ano = entity.getAno();
         imgUrl = entity.getImgUrl();
         descricaoCurta = entity.getDescricaoCurta();
+    }
+
+    public GameDTO(GameProjecao projecao) {
+        id = projecao.getId();
+        titulo = projecao.getTitulo();
+        ano = projecao.getAno();
+        imgUrl = projecao.getImgUrl();
+        descricaoCurta = projecao.getDescricaoCurta();
     }
 }
